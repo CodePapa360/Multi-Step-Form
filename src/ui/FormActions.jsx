@@ -18,7 +18,7 @@ function FormActions() {
   return (
     <div>
       {step > 1 && <button onClick={handlePrev}>Previous</button>}
-      {step < 4 && <button onClick={handleNext}>Next</button>}
+      {step < 5 && <button onClick={handleNext}>Next</button>}
     </div>
   );
 }
