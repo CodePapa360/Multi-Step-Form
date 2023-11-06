@@ -1,15 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentStep, nextStep, prevStep } from "../features/formSlice";
 
-function Footer() {
+function FormActions() {
   const dispatch = useDispatch();
   const step = useSelector(getCurrentStep);
 
-  function handleNext() {
+  function handleNext(e) {
+    e.preventDefault();
     dispatch(nextStep());
   }
 
-  function handlePrev() {
+  function handlePrev(e) {
+    e.preventDefault();
     dispatch(prevStep());
   }
 
@@ -21,4 +23,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default FormActions;

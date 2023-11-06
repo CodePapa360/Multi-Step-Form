@@ -1,8 +1,7 @@
 import GlobalStyles from "./styles/GlobalStyles";
 
-import Forms from "./ui/Forms";
+import Form from "./ui/Form";
 import Sidebar from "./ui/Sidebar";
-import Footer from "./ui/Footer";
 
 function App() {
   return (
@@ -10,8 +9,7 @@ function App() {
       <GlobalStyles />
       <div>
         <Sidebar />
-        <Forms />
-        <Footer />
+        <Form />
       </div>
     </>
   );
