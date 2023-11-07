@@ -1,5 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentStep, nextStep, prevStep } from "../features/formSlice";
+import styled from "styled-components";
+import Button from "./Button";
+
+const StyledFormActions = styled.div`
+  display: flex;
+  align-items: center;
+
+  background-color: var(--white);
+  padding: 1rem;
+`;
 
 function FormActions() {
   const dispatch = useDispatch();
@@ -16,10 +26,18 @@ function FormActions() {
   }
 
   return (
-    <div>
-      {step > 1 && <button onClick={handlePrev}>Previous</button>}
-      {step < 5 && <button onClick={handleNext}>Next</button>}
-    </div>
+    <StyledFormActions>
+      {step > 1 && (
+        <Button onClick={handlePrev} positon="left">
+          Go back
+        </Button>
+      )}
+      {step < 5 && (
+        <Button onClick={handleNext} positon="right">
+          Next step
+        </Button>
+      )}
+    </StyledFormActions>
   );
 }
 
