@@ -7,6 +7,7 @@ body{
   background-color: var(--magnolia);
 }
 
+
 :root{
 --marine-blue: hsl(213, 96%, 18%);
 --purplish-blue: hsl(243, 100%, 62%);

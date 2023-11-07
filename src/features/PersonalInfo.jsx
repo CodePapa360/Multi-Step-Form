@@ -1,10 +1,39 @@
+import styled from "styled-components";
+import Heading from "../ui/Heading";
+import SubHeading from "../ui/SubHeading";
+
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  input {
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: 2px solid var(--light-gray);
+    border-radius: 5px;
+    font-weight: 500;
+
+    &:focus {
+      border-color: var(--marine-blue);
+    }
+  }
+`;
+
 function PersonalInfo() {
   return (
     <>
-      <h2>Personal info</h2>
-      <p>Please provide your name, email address, and phone number</p>
+      <Heading>Personal info</Heading>
+      <SubHeading>
+        Please provide your name, email address, and phone number
+      </SubHeading>
 
-      <div>
+      <InputWrapper>
         <label htmlFor="name">Name</label>
         <input
           type="text"
@@ -12,9 +41,9 @@ function PersonalInfo() {
           id="name"
           placeholder="e.g Stephen King"
         />
-      </div>
+      </InputWrapper>
 
-      <div>
+      <InputWrapper>
         <label htmlFor="email">Email Address</label>
         <input
           type="text"
@@ -22,9 +51,9 @@ function PersonalInfo() {
           id="email"
           placeholder="e.g stephenking.lorem.com"
         />
-      </div>
+      </InputWrapper>
 
-      <div>
+      <InputWrapper>
         <label htmlFor="phone">Phone Number</label>
         <input
           type="text"
@@ -32,7 +61,7 @@ function PersonalInfo() {
           id="phone"
           placeholder="e.g +1 234 567 890"
         />
-      </div>
+      </InputWrapper>
     </>
   );
 }
