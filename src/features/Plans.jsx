@@ -27,6 +27,7 @@ const PlanWrapper = styled.label`
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 10px;
+  user-select: none;
 
   h3 {
     font-weight: 700;

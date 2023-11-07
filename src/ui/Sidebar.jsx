@@ -43,37 +43,37 @@ function Sidebar() {
 
   return (
     <StyledSidebar>
-      <span>
+      <li>
         <StepNum className={step === 1 && "active"}>1</StepNum>
         <StepInfo>
           <p>Step 1</p>
           <p>Your info</p>
         </StepInfo>
-      </span>
+      </li>
 
-      <span>
+      <li>
         <StepNum className={step === 2 && "active"}>2</StepNum>
         <StepInfo>
           <p>Step 2</p>
           <p>Select plan</p>
         </StepInfo>
-      </span>
+      </li>
 
-      <span>
+      <li>
         <StepNum className={step === 3 && "active"}>3</StepNum>
         <StepInfo>
           <p>Step 3</p>
           <p>Add-ons</p>
         </StepInfo>
-      </span>
+      </li>
 
-      <span>
+      <li>
         <StepNum className={(step === 4 || step === 5) && "active"}>4</StepNum>
         <StepInfo>
           <p>Step 4</p>
           <p>Summary</p>
         </StepInfo>
-      </span>
+      </li>
     </StyledSidebar>
   );
 }
