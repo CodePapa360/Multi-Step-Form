@@ -53,6 +53,7 @@ const Duration = styled.label`
   height: 20px;
   position: relative;
   width: 42px;
+  cursor: pointer;
 
   input {
     display: none;
@@ -99,11 +100,21 @@ const Duration = styled.label`
   span::before {
     content: "Monthly";
     transform: translateX(-35px);
+    color: var(--marine-blue);
   }
 
   span::after {
     content: "Yearly";
     transform: translateX(35px);
+    color: var(--cool-gray);
+  }
+
+  input:checked ~ span::before {
+    color: var(--cool-gray);
+  }
+
+  input:checked ~ span::after {
+    color: var(--marine-blue);
   }
 `;
 
@@ -152,9 +163,9 @@ function Plans() {
 
       <DurationContainer>
         <Duration htmlFor="checkbox">
-          <span></span>
           <input type="checkbox" id="checkbox" />
           <div></div>
+          <span></span>
         </Duration>
       </DurationContainer>
     </>
