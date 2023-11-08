@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import Heading from "../ui/Heading";
 import SubHeading from "../ui/SubHeading";
+import FormBody from "../ui/FormBody";
+import FormActions from "../ui/FormActions";
+import { nextStep, prevStep } from "./formSlice";
+import Button from "../ui/Button";
+import { useDispatch } from "react-redux";
 
 const PlansContainer = styled.div`
   display: flex;
@@ -119,55 +124,80 @@ const Duration = styled.label`
 `;
 
 function Plans() {
+  const dispatch = useDispatch();
+
+  function handleNext(e) {
+    e.preventDefault();
+
+    dispatch(nextStep());
+  }
+
+  function handlePrev(e) {
+    e.preventDefault();
+    dispatch(prevStep());
+  }
+
   return (
     <>
-      <Heading>Plans</Heading>
-      <SubHeading>
-        You have the option for monthly or yearly billing.
-      </SubHeading>
+      <FormBody>
+        <Heading>Plans</Heading>
+        <SubHeading>
+          You have the option for monthly or yearly billing.
+        </SubHeading>
 
-      <PlansContainer>
-        <input type="radio" name="plan" id="arcade" />
-        <PlanWrapper htmlFor="arcade">
-          <span>
-            <img src="/images/icon-arcade.svg" alt="Arcade" />
-          </span>
-          <span>
-            <h3>Arcade</h3>
-            <p>$9/mo</p>
-          </span>
-        </PlanWrapper>
+        <PlansContainer>
+          <input type="radio" name="plan" id="arcade" />
+          <PlanWrapper htmlFor="arcade">
+            <span>
+              <img src="/images/icon-arcade.svg" alt="Arcade" />
+            </span>
+            <span>
+              <h3>Arcade</h3>
+              <p>$9/mo</p>
+            </span>
+          </PlanWrapper>
 
-        <input type="radio" name="plan" id="advanced" />
-        <PlanWrapper htmlFor="advanced">
-          <span>
-            <img src="/images/icon-advanced.svg" alt="advanced" />
-          </span>
-          <span>
-            <h3>Advanced</h3>
-            <p>$12/mo</p>
-          </span>
-        </PlanWrapper>
+          <input type="radio" name="plan" id="advanced" />
+          <PlanWrapper htmlFor="advanced">
+            <span>
+              <img src="/images/icon-advanced.svg" alt="advanced" />
+            </span>
+            <span>
+              <h3>Advanced</h3>
+              <p>$12/mo</p>
+            </span>
+          </PlanWrapper>
 
-        <input type="radio" name="plan" id="pro" />
-        <PlanWrapper htmlFor="pro">
-          <span>
-            <img src="/images/icon-pro.svg" alt="pro" />
-          </span>
-          <span>
-            <h3>Pro</h3>
-            <p>$15/mo</p>
-          </span>
-        </PlanWrapper>
-      </PlansContainer>
+          <input type="radio" name="plan" id="pro" />
+          <PlanWrapper htmlFor="pro">
+            <span>
+              <img src="/images/icon-pro.svg" alt="pro" />
+            </span>
+            <span>
+              <h3>Pro</h3>
+              <p>$15/mo</p>
+            </span>
+          </PlanWrapper>
+        </PlansContainer>
 
-      <DurationContainer>
-        <Duration htmlFor="checkbox">
-          <input type="checkbox" id="checkbox" />
-          <div></div>
-          <span></span>
-        </Duration>
-      </DurationContainer>
+        <DurationContainer>
+          <Duration htmlFor="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div></div>
+            <span></span>
+          </Duration>
+        </DurationContainer>
+      </FormBody>
+
+      <FormActions>
+        <Button onClick={handlePrev} positon="left">
+          Go back
+        </Button>
+
+        <Button onClick={handleNext} positon="right">
+          Next step
+        </Button>
+      </FormActions>
     </>
   );
 }

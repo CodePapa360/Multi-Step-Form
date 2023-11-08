@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import Heading from "../ui/Heading";
 import SubHeading from "../ui/SubHeading";
+import FormBody from "../ui/FormBody";
+import FormActions from "../ui/FormActions";
+import Button from "../ui/Button";
+import { nextStep, prevStep } from "./formSlice";
+import { useDispatch } from "react-redux";
 
 const AddonsContainer = styled.ul`
   display: flex;
@@ -72,65 +77,79 @@ const ExtentionWrapper = styled.li`
 `;
 
 function AddOns() {
+  const dispatch = useDispatch();
+
+  function handleNext(e) {
+    e.preventDefault();
+
+    dispatch(nextStep());
+  }
+
+  function handlePrev(e) {
+    e.preventDefault();
+    dispatch(prevStep());
+  }
+
   return (
     <>
-      <Heading>Pick add-ons</Heading>
-      <SubHeading>Add-ons help enhance your gaming experience.</SubHeading>
+      <FormBody>
+        <Heading>Pick add-ons</Heading>
+        <SubHeading>Add-ons help enhance your gaming experience.</SubHeading>
 
-      <AddonsContainer>
-        <ExtentionWrapper>
-          <input type="checkbox" name="onlineService" id="onlineService" />
-          <label htmlFor="onlineService">
-            <span>
-              <h3>Online Service</h3>
-              <p>Access to multiplayer games</p>
-            </span>
+        <AddonsContainer>
+          <ExtentionWrapper>
+            <input type="checkbox" name="onlineService" id="onlineService" />
+            <label htmlFor="onlineService">
+              <span>
+                <h3>Online Service</h3>
+                <p>Access to multiplayer games</p>
+              </span>
 
-            <p>+$1/mo</p>
-          </label>
-        </ExtentionWrapper>
+              <p>+$1/mo</p>
+            </label>
+          </ExtentionWrapper>
 
-        <ExtentionWrapper>
-          <input type="checkbox" name="largerStorage" id="largerStorage" />
+          <ExtentionWrapper>
+            <input type="checkbox" name="largerStorage" id="largerStorage" />
 
-          <label htmlFor="largerStorage">
-            <span>
-              <h3>Larger Storage</h3>
-              <p>Extra 1TB of cloud save</p>
-            </span>
+            <label htmlFor="largerStorage">
+              <span>
+                <h3>Larger Storage</h3>
+                <p>Extra 1TB of cloud save</p>
+              </span>
 
-            <p>+$2/mo</p>
-          </label>
-        </ExtentionWrapper>
+              <p>+$2/mo</p>
+            </label>
+          </ExtentionWrapper>
 
-        <ExtentionWrapper>
-          <input
-            type="checkbox"
-            name="customizableProfile"
-            id="customizableProfile"
-          />
+          <ExtentionWrapper>
+            <input
+              type="checkbox"
+              name="customizableProfile"
+              id="customizableProfile"
+            />
 
-          <label htmlFor="customizableProfile">
-            <span>
-              <h3>Customizable Profile</h3>
-              <p>Custom theme on your profile</p>
-            </span>
+            <label htmlFor="customizableProfile">
+              <span>
+                <h3>Customizable Profile</h3>
+                <p>Custom theme on your profile</p>
+              </span>
 
-            <p>+$2/mo</p>
-          </label>
-        </ExtentionWrapper>
-        {/* <ExtentionWrapper>
-          <input id="onlineService" type="checkbox" />
-          <label htmlFor="onlineService">
-            <span>
-              <h3>Online Service</h3>
-              <p>Access to multiplayer games</p>
-            </span>
+              <p>+$2/mo</p>
+            </label>
+          </ExtentionWrapper>
+        </AddonsContainer>
+      </FormBody>
 
-            <p>+$1/mo</p>
-          </label>
-        </ExtentionWrapper> */}
-      </AddonsContainer>
+      <FormActions>
+        <Button onClick={handlePrev} positon="left">
+          Go back
+        </Button>
+
+        <Button onClick={handleNext} positon="right">
+          Next step
+        </Button>
+      </FormActions>
     </>
   );
 }

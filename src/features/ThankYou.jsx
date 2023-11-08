@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Heading from "../ui/Heading";
+import FormBody from "../ui/FormBody";
 
 const StyledThankYou = styled.div`
   display: flex;
@@ -20,19 +21,21 @@ const StyledThankYou = styled.div`
 
 function ThankYou() {
   return (
-    <StyledThankYou>
-      <span>
-        <img src="/images/icon-thank-you.svg" alt="Thank you" />
-      </span>
+    <FormBody>
+      <StyledThankYou>
+        <span>
+          <img src="/images/icon-thank-you.svg" alt="Thank you" />
+        </span>
 
-      <Heading>Thank you!</Heading>
+        <Heading>Thank you!</Heading>
 
-      <p>
-        Thanks for confirming your subscription! We hope you have fun using our
-        platform. If you ever need support, please feel free to email us at
-        support@loremgaming.com.
-      </p>
-    </StyledThankYou>
+        <p>
+          Thanks for confirming your subscription! We hope you have fun using
+          our platform. If you ever need support, please feel free to email us
+          at support@loremgaming.com.
+        </p>
+      </StyledThankYou>
+    </FormBody>
   );
 }
 

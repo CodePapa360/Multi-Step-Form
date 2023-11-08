@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import Heading from "../ui/Heading";
 import SubHeading from "../ui/SubHeading";
+import FormBody from "../ui/FormBody";
+import FormActions from "../ui/FormActions";
+import Button from "../ui/Button";
+import { nextStep, prevStep } from "./formSlice";
+import { useDispatch } from "react-redux";
 
 const SummeryContainer = styled.div`
   display: flex;
@@ -75,40 +80,65 @@ const TotalSummery = styled.div`
 `;
 
 function FinishingUp() {
+  const dispatch = useDispatch();
+
+  function handleNext(e) {
+    e.preventDefault();
+
+    dispatch(nextStep());
+  }
+
+  function handlePrev(e) {
+    e.preventDefault();
+    dispatch(prevStep());
+  }
+
   return (
     <>
-      <Heading>Finishing up</Heading>
-      <SubHeading>
-        Double-check everithing looks OK before confirming
-      </SubHeading>
+      <FormBody>
+        <Heading>Finishing up</Heading>
+        <SubHeading>
+          Double-check everithing looks OK before confirming
+        </SubHeading>
 
-      <SummeryContainer>
-        <TopSummery>
-          <Summery>
-            <div>
-              <p>Arcade(Monthly)</p>
-              <button>Change</button>
-            </div>
+        <SummeryContainer>
+          <TopSummery>
+            <Summery>
+              <div>
+                <p>Arcade(Monthly)</p>
+                <button>Change</button>
+              </div>
 
-            <p>$9/mo</p>
-          </Summery>
+              <p>$9/mo</p>
+            </Summery>
 
-          <Summery>
-            <p>Online service</p>
-            <p>+$1/mo</p>
-          </Summery>
+            <Summery>
+              <p>Online service</p>
+              <p>+$1/mo</p>
+            </Summery>
 
-          <Summery>
-            <p>Larger Storage</p>
-            <p>+$2/mo</p>
-          </Summery>
-        </TopSummery>
+            <Summery>
+              <p>Larger Storage</p>
+              <p>+$2/mo</p>
+            </Summery>
+          </TopSummery>
 
-        <TotalSummery>
-          <p>Total (per month)</p>
-          <p>+$12/mo</p>
-        </TotalSummery>
-      </SummeryContainer>
+          <TotalSummery>
+            <p>Total (per month)</p>
+            <p>+$12/mo</p>
+          </TotalSummery>
+        </SummeryContainer>
+      </FormBody>
+
+      <FormActions>
+        <Button onClick={handlePrev} positon="left">
+          Go back
+        </Button>
+
+        <Button onClick={handleNext} positon="right">
+          Next step
+        </Button>
+      </FormActions>
     </>
   );
 }

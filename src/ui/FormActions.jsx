@@ -11,34 +11,8 @@ const StyledFormActions = styled.div`
   padding: 1rem;
 `;
 
-function FormActions() {
-  const dispatch = useDispatch();
-  const step = useSelector(getCurrentStep);
-
-  function handleNext(e) {
-    e.preventDefault();
-    dispatch(nextStep());
-  }
-
-  function handlePrev(e) {
-    e.preventDefault();
-    dispatch(prevStep());
-  }
-
-  return (
-    <StyledFormActions>
-      {step > 1 && (
-        <Button onClick={handlePrev} positon="left">
-          Go back
-        </Button>
-      )}
-      {step < 5 && (
-        <Button onClick={handleNext} positon="right">
-          Next step
-        </Button>
-      )}
-    </StyledFormActions>
-  );
+function FormActions({ children }) {
+  return <StyledFormActions>{children}</StyledFormActions>;
 }
 
 export default FormActions;
