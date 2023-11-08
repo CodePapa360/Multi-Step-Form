@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Heading from "../ui/Heading";
 
 const StyledThankYou = styled.div`
   display: flex;
@@ -11,6 +12,10 @@ const StyledThankYou = styled.div`
   span {
     margin-bottom: 0.5rem;
   }
+
+  p {
+    color: var(--cool-gray);
+  }
 `;
 
 function ThankYou() {
@@ -20,7 +25,7 @@ function ThankYou() {
         <img src="/images/icon-thank-you.svg" alt="Thank you" />
       </span>
 
-      <h2>Thank you!</h2>
+      <Heading>Thank you!</Heading>
 
       <p>
         Thanks for confirming your subscription! We hope you have fun using our

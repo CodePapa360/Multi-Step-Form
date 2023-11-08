@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
 body{
   font-family: 'Ubuntu', sans-serif;
   background-color: var(--magnolia);
+  color: var(marine-blue) ;
 }
 
 
