@@ -7,6 +7,7 @@ import Step4 from "../pages/Step4";
 import { useSelector } from "react-redux";
 import FormActions from "./FormActions";
 import styled from "styled-components";
+import ThankYou from "../features/ThankYou";
 
 const StyledForm = styled.form`
   display: flex;
@@ -36,8 +37,9 @@ function AppLayout() {
         {step === 2 && <Step2 />}
         {step === 3 && <Step3 />}
         {step === 4 && <Step4 />}
+        {step === 5 && <ThankYou />}
       </FormInfo>
-      <FormActions />
+      {step < 5 && <FormActions />}
     </StyledForm>
   );
 }
