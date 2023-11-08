@@ -4,8 +4,9 @@ import SubHeading from "../ui/SubHeading";
 import FormBody from "../ui/FormBody";
 import FormActions from "../ui/FormActions";
 import Button from "../ui/Button";
-import { nextStep, prevStep } from "./formSlice";
+import { finishStep, prevStep } from "./formSlice";
 import { useDispatch } from "react-redux";
+import FormInputs from "../ui/FormInputs";
 
 const SummeryContainer = styled.div`
   display: flex;
@@ -85,7 +86,7 @@ function FinishingUp() {
   function handleNext(e) {
     e.preventDefault();
 
-    dispatch(nextStep());
+    dispatch(finishStep());
   }
 
   function handlePrev(e) {
@@ -94,8 +95,8 @@ function FinishingUp() {
   }
 
   return (
-    <>
-      <FormBody>
+    <FormBody>
+      <FormInputs>
         <Heading>Finishing up</Heading>
         <SubHeading>
           Double-check everithing looks OK before confirming
@@ -128,7 +129,7 @@ function FinishingUp() {
             <p>+$12/mo</p>
           </TotalSummery>
         </SummeryContainer>
-      </FormBody>
+      </FormInputs>
 
       <FormActions>
         <Button onClick={handlePrev} positon="left">
@@ -139,7 +140,7 @@ function FinishingUp() {
           Next step
         </Button>
       </FormActions>
-    </>
+    </FormBody>
   );
 }
 

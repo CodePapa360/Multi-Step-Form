@@ -4,9 +4,11 @@ import SubHeading from "../ui/SubHeading";
 import FormBody from "../ui/FormBody";
 import FormActions from "../ui/FormActions";
 import Button from "../ui/Button";
-import { nextStep, prevStep } from "./formSlice";
+import { addPersonalInfoData, prevStep } from "./formSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import FormInputs from "../ui/FormInputs";
 
 const InputWrapper = styled.div`
   display: flex;
@@ -33,21 +35,23 @@ const InputWrapper = styled.div`
 
 function PersonalInfo() {
   const dispatch = useDispatch();
-
   const { name, email, phone } = useSelector((state) => state.form);
-  const [newName, setNewName] = useState(name);
-  const [newEmail, setNewEmail] = useState(email);
-  const [newPhone, setNewPhone] = useState(phone);
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+  } = useForm({
+    defaultValues: { name, email, phone },
+  });
 
-  function handleNext(e) {
-    e.preventDefault();
-
-    dispatch(nextStep());
+  function handleNext(data) {
+    dispatch(addPersonalInfoData(data));
   }
 
   return (
-    <>
-      <FormBody>
+    <FormBody onSubmit={handleSubmit(handleNext)}>
+      <FormInputs>
         <Heading>Personal info</Heading>
         <SubHeading>
           Please provide your name, email address, and phone number
@@ -60,9 +64,9 @@ function PersonalInfo() {
             name="name"
             id="name"
             placeholder="e.g Stephen King"
-            value={newName}
-            onChange={(e) => setNewName(e.target.value)}
+            {...register("name", { required: "Name is required" })}
           />
+          {errors.name && <p>{errors.name.message}</p>}
         </InputWrapper>
 
         <InputWrapper>
@@ -72,9 +76,15 @@ function PersonalInfo() {
             name="email"
             id="email"
             placeholder="e.g stephenking.lorem.com"
-            value={newEmail}
-            onChange={(e) => setNewEmail(e.target.value)}
+            {...register("email", {
+              required: "Email address is required",
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Please provide your valid email address.",
+              },
+            })}
           />
+          {errors.email && <p>{errors.email.message}</p>}
         </InputWrapper>
 
         <InputWrapper>
@@ -84,18 +94,25 @@ function PersonalInfo() {
             name="phone"
             id="phone"
             placeholder="e.g +1 234 567 890"
-            value={newPhone}
-            onChange={(e) => setNewPhone(e.target.value)}
+            {...register("phone", {
+              required: "Phone number is required",
+              pattern: {
+                value:
+                  /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+                message: "Please provide your valid mobile number.",
+              },
+            })}
           />
+          {errors.phone && <p>{errors.phone.message}</p>}
         </InputWrapper>
-      </FormBody>
+      </FormInputs>
 
       <FormActions>
-        <Button onClick={handleNext} positon="right">
+        <Button type="submit" positon="right">
           Next step
         </Button>
       </FormActions>
-    </>
+    </FormBody>
   );
 }
 

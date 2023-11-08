@@ -4,8 +4,9 @@ import SubHeading from "../ui/SubHeading";
 import FormBody from "../ui/FormBody";
 import FormActions from "../ui/FormActions";
 import Button from "../ui/Button";
-import { nextStep, prevStep } from "./formSlice";
+import { addAddonsData, prevStep } from "./formSlice";
 import { useDispatch } from "react-redux";
+import FormInputs from "../ui/FormInputs";
 
 const AddonsContainer = styled.ul`
   display: flex;
@@ -82,7 +83,7 @@ function AddOns() {
   function handleNext(e) {
     e.preventDefault();
 
-    dispatch(nextStep());
+    dispatch(addAddonsData());
   }
 
   function handlePrev(e) {
@@ -91,8 +92,8 @@ function AddOns() {
   }
 
   return (
-    <>
-      <FormBody>
+    <FormBody>
+      <FormInputs>
         <Heading>Pick add-ons</Heading>
         <SubHeading>Add-ons help enhance your gaming experience.</SubHeading>
 
@@ -139,7 +140,7 @@ function AddOns() {
             </label>
           </ExtentionWrapper>
         </AddonsContainer>
-      </FormBody>
+      </FormInputs>
 
       <FormActions>
         <Button onClick={handlePrev} positon="left">
@@ -150,7 +151,7 @@ function AddOns() {
           Next step
         </Button>
       </FormActions>
-    </>
+    </FormBody>
   );
 }
 

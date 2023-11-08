@@ -1,12 +1,7 @@
 import styled from "styled-components";
+const StyledHeading = styled.p`
+  color: var(--cool-gray);
+  margin-bottom: 1rem;
+`;
 
-function SubHeading({ children }) {
-  const StyledHeading = styled.p`
-    color: var(--cool-gray);
-    margin-bottom: 1rem;
-  `;
-
-  return <StyledHeading>{children}</StyledHeading>;
-}
-
-export default SubHeading;
+export default StyledHeading;

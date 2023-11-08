@@ -1,7 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
-import { getCurrentStep, nextStep, prevStep } from "../features/formSlice";
 import styled from "styled-components";
-import Button from "./Button";
 
 const StyledFormActions = styled.div`
   display: flex;
@@ -11,8 +8,4 @@ const StyledFormActions = styled.div`
   padding: 1rem;
 `;
 
-function FormActions({ children }) {
-  return <StyledFormActions>{children}</StyledFormActions>;
-}
-
-export default FormActions;
+export default StyledFormActions;

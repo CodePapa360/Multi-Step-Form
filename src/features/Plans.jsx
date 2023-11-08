@@ -3,9 +3,12 @@ import Heading from "../ui/Heading";
 import SubHeading from "../ui/SubHeading";
 import FormBody from "../ui/FormBody";
 import FormActions from "../ui/FormActions";
-import { nextStep, prevStep } from "./formSlice";
+import { addPlanData, prevStep, toggleDuration } from "./formSlice";
 import Button from "../ui/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import FormInputs from "../ui/FormInputs";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const PlansContainer = styled.div`
   display: flex;
@@ -125,21 +128,29 @@ const Duration = styled.label`
 
 function Plans() {
   const dispatch = useDispatch();
+  const { isYearly } = useSelector((state) => state.form);
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+  } = useForm();
 
-  function handleNext(e) {
-    e.preventDefault();
-
-    dispatch(nextStep());
+  function handleNext(data) {
+    dispatch(addPlanData(data));
   }
 
-  function handlePrev(e) {
-    e.preventDefault();
-    dispatch(prevStep());
+  function handlePrev(data) {
+    dispatch(prevStep(data));
+  }
+
+  function handleYearlySub() {
+    dispatch(toggleDuration());
   }
 
   return (
-    <>
-      <FormBody>
+    <FormBody>
+      <FormInputs>
         <Heading>Plans</Heading>
         <SubHeading>
           You have the option for monthly or yearly billing.
@@ -153,7 +164,7 @@ function Plans() {
             </span>
             <span>
               <h3>Arcade</h3>
-              <p>$9/mo</p>
+              <p>{`$${isYearly ? "90/yr" : "9/mo"}`}</p>
             </span>
           </PlanWrapper>
 
@@ -182,12 +193,17 @@ function Plans() {
 
         <DurationContainer>
           <Duration htmlFor="checkbox">
-            <input type="checkbox" id="checkbox" />
+            <input
+              type="checkbox"
+              id="checkbox"
+              checked={isYearly}
+              onChange={handleYearlySub}
+            />
             <div></div>
             <span></span>
           </Duration>
         </DurationContainer>
-      </FormBody>
+      </FormInputs>
 
       <FormActions>
         <Button onClick={handlePrev} positon="left">
@@ -198,7 +214,7 @@ function Plans() {
           Next step
         </Button>
       </FormActions>
-    </>
+    </FormBody>
   );
 }
 
