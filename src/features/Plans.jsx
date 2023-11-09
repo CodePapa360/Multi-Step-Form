@@ -3,12 +3,16 @@ import Heading from "../ui/Heading";
 import SubHeading from "../ui/SubHeading";
 import FormBody from "../ui/FormBody";
 import FormActions from "../ui/FormActions";
-import { addPlanData, prevStep, toggleDuration } from "./formSlice";
+import {
+  plans,
+  nextStep,
+  prevStep,
+  toggleDuration,
+  updatePlan,
+} from "./formSlice";
 import Button from "../ui/Button";
 import { useDispatch, useSelector } from "react-redux";
 import FormInputs from "../ui/FormInputs";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
 
 const PlansContainer = styled.div`
   display: flex;
@@ -128,20 +132,10 @@ const Duration = styled.label`
 
 function Plans() {
   const dispatch = useDispatch();
-  const { isYearly } = useSelector((state) => state.form);
-  const {
-    register,
-    handleSubmit,
-    getValues,
-    formState: { errors },
-  } = useForm();
+  const { isYearly, plan } = useSelector((state) => state.form);
 
-  function handleNext(data) {
-    dispatch(addPlanData(data));
-  }
-
-  function handlePrev(data) {
-    dispatch(prevStep(data));
+  function handlePrev() {
+    dispatch(prevStep());
   }
 
   function handleYearlySub() {
@@ -149,7 +143,7 @@ function Plans() {
   }
 
   return (
-    <FormBody>
+    <FormBody onSubmit={() => dispatch(nextStep())}>
       <FormInputs>
         <Heading>Plans</Heading>
         <SubHeading>
@@ -157,36 +151,64 @@ function Plans() {
         </SubHeading>
 
         <PlansContainer>
-          <input type="radio" name="plan" id="arcade" />
+          <input
+            type="radio"
+            name="plan"
+            id="arcade"
+            onChange={() => dispatch(updatePlan("arcade"))}
+            checked={plan.name === "arcade"}
+          />
           <PlanWrapper htmlFor="arcade">
             <span>
               <img src="/images/icon-arcade.svg" alt="Arcade" />
             </span>
             <span>
               <h3>Arcade</h3>
-              <p>{`$${isYearly ? "90/yr" : "9/mo"}`}</p>
+              <p>{`$${
+                isYearly
+                  ? `${plans.arcade.yearly}/yr`
+                  : `${plans.arcade.monthly}/mo`
+              }`}</p>
             </span>
           </PlanWrapper>
 
-          <input type="radio" name="plan" id="advanced" />
+          <input
+            type="radio"
+            name="plan"
+            id="advanced"
+            onChange={() => dispatch(updatePlan("advanced"))}
+            checked={plan.name === "advanced"}
+          />
           <PlanWrapper htmlFor="advanced">
             <span>
               <img src="/images/icon-advanced.svg" alt="advanced" />
             </span>
             <span>
               <h3>Advanced</h3>
-              <p>$12/mo</p>
+              <p>{`$${
+                isYearly
+                  ? `${plans.advanced.yearly}/yr`
+                  : `${plans.advanced.monthly}/mo`
+              }`}</p>
             </span>
           </PlanWrapper>
 
-          <input type="radio" name="plan" id="pro" />
+          <input
+            type="radio"
+            name="plan"
+            id="pro"
+            onChange={() => dispatch(updatePlan("pro"))}
+            checked={plan.name === "pro"}
+          />
           <PlanWrapper htmlFor="pro">
             <span>
               <img src="/images/icon-pro.svg" alt="pro" />
             </span>
             <span>
               <h3>Pro</h3>
-              <p>$15/mo</p>
+              <p>{`$${
+                isYearly ? `${plans.pro.yearly}/yr` : `${plans.pro.monthly}/mo`
+              }`}</p>
             </span>
           </PlanWrapper>
         </PlansContainer>
@@ -210,7 +232,7 @@ function Plans() {
           Go back
         </Button>
 
-        <Button onClick={handleNext} positon="right">
+        <Button type="submit" positon="right">
           Next step
         </Button>
       </FormActions>

@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const plans = {
-  advance: 12,
+export const plans = {
+  arcade: { monthly: 9, yearly: 90 },
+  advanced: { monthly: 12, yearly: 120 },
+  pro: { monthly: 15, yearly: 150 },
 };
 
 const initialState = {
@@ -9,8 +11,11 @@ const initialState = {
   name: "",
   email: "",
   phone: "",
-  isYearly: true,
-  plan: { planName: "advance", charge: 12 },
+  isYearly: false,
+  plan: {
+    name: Object.keys(plans)[0],
+    charge: Object.values(plans)[0]["monthly"],
+  },
   extentions: [
     { extName: "online-service", charge: 2 },
     { extName: "large-storage", charge: 2 },
@@ -38,6 +43,16 @@ const formSlice = createSlice({
     },
     toggleDuration: (state) => {
       state.isYearly = !state.isYearly;
+      const duration = state.isYearly ? "yearly" : "monthly";
+      state.plan.charge = plans[state.plan.name][duration];
+    },
+    updatePlan: (state, action) => {
+      state.plan.name = action.payload;
+      const duration = state.isYearly ? "yearly" : "monthly";
+      state.plan.charge = plans[action.payload][duration];
+    },
+    nextStep: (state, action) => {
+      state.step = state.step + 1;
     },
     prevStep: (state, action) => {
       state.step = state.step - 1;
@@ -51,6 +66,8 @@ export const {
   addAddonsData,
   finishStep,
   toggleDuration,
+  updatePlan,
+  nextStep,
   prevStep,
 } = formSlice.actions;
 export default formSlice.reducer;
