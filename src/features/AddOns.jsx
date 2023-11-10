@@ -4,9 +4,10 @@ import SubHeading from "../ui/SubHeading";
 import FormBody from "../ui/FormBody";
 import FormActions from "../ui/FormActions";
 import Button from "../ui/Button";
-import { addAddonsData, prevStep } from "./formSlice";
-import { useDispatch } from "react-redux";
+import { addAddonsData, addOns, prevStep } from "./formSlice";
+import { useDispatch, useSelector } from "react-redux";
 import FormInputs from "../ui/FormInputs";
+import AddOn from "./AddOn";
 
 const AddonsContainer = styled.ul`
   display: flex;
@@ -78,6 +79,7 @@ const ExtentionWrapper = styled.li`
 `;
 
 function AddOns() {
+  const { addOns } = useSelector((state) => state.form);
   const dispatch = useDispatch();
 
   function handleNext(e) {
@@ -91,6 +93,8 @@ function AddOns() {
     dispatch(prevStep());
   }
 
+  console.log(addOns);
+
   return (
     <FormBody>
       <FormInputs>
@@ -98,7 +102,10 @@ function AddOns() {
         <SubHeading>Add-ons help enhance your gaming experience.</SubHeading>
 
         <AddonsContainer>
-          <ExtentionWrapper>
+          {addOns.map((addOn) => (
+            <AddOn addOn={addOn} key={addOn.id} />
+          ))}
+          {/* <ExtentionWrapper>
             <input type="checkbox" name="onlineService" id="onlineService" />
             <label htmlFor="onlineService">
               <span>
@@ -138,7 +145,7 @@ function AddOns() {
 
               <p>+$2/mo</p>
             </label>
-          </ExtentionWrapper>
+          </ExtentionWrapper> */}
         </AddonsContainer>
       </FormInputs>
 

@@ -6,6 +6,30 @@ export const plans = {
   pro: { monthly: 15, yearly: 150 },
 };
 
+const addOns = [
+  {
+    id: 1,
+    name: "Online Service",
+    description: "Access to multiplayer games",
+    costs: { monthly: 1, yearly: 10 },
+    isAdded: false,
+  },
+  {
+    id: 2,
+    name: "Larger Storage",
+    description: "Extra 1TB of cloud save",
+    costs: { monthly: 1, yearly: 10 },
+    isAdded: true,
+  },
+  {
+    id: 3,
+    name: "Customizable Profile",
+    description: "Custom theme on your profile",
+    costs: { monthly: 1, yearly: 10 },
+    isAdded: false,
+  },
+];
+
 const initialState = {
   step: 2,
   name: "",
@@ -16,10 +40,7 @@ const initialState = {
     name: Object.keys(plans)[0],
     charge: Object.values(plans)[0]["monthly"],
   },
-  extentions: [
-    { extName: "online-service", charge: 2 },
-    { extName: "large-storage", charge: 2 },
-  ],
+  addOns,
 };
 
 const formSlice = createSlice({
