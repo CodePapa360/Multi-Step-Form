@@ -8,30 +8,30 @@ export const plans = {
 
 const addOns = [
   {
-    id: 1,
+    id: 45325,
     name: "Online Service",
     description: "Access to multiplayer games",
-    costs: { monthly: 1, yearly: 10 },
-    isAdded: false,
-  },
-  {
-    id: 2,
-    name: "Larger Storage",
-    description: "Extra 1TB of cloud save",
     costs: { monthly: 1, yearly: 10 },
     isAdded: true,
   },
   {
-    id: 3,
+    id: 25233,
+    name: "Larger Storage",
+    description: "Extra 1TB of cloud save",
+    costs: { monthly: 2, yearly: 20 },
+    isAdded: true,
+  },
+  {
+    id: 25325,
     name: "Customizable Profile",
     description: "Custom theme on your profile",
-    costs: { monthly: 1, yearly: 10 },
+    costs: { monthly: 2, yearly: 20 },
     isAdded: false,
   },
 ];
 
 const initialState = {
-  step: 2,
+  step: 3,
   name: "",
   email: "",
   phone: "",
@@ -72,10 +72,17 @@ const formSlice = createSlice({
       const duration = state.isYearly ? "yearly" : "monthly";
       state.plan.charge = plans[action.payload][duration];
     },
-    nextStep: (state, action) => {
+    addRemoveAddon: (state, action) => {
+      const addonIndex = state.addOns.findIndex(
+        (addon) => addon.id === Number(action.payload)
+      );
+      state.addOns[addonIndex].isAdded = !state.addOns[addonIndex].isAdded;
+    },
+
+    nextStep: (state) => {
       state.step = state.step + 1;
     },
-    prevStep: (state, action) => {
+    prevStep: (state) => {
       state.step = state.step - 1;
     },
   },
@@ -88,6 +95,7 @@ export const {
   finishStep,
   toggleDuration,
   updatePlan,
+  addRemoveAddon,
   nextStep,
   prevStep,
 } = formSlice.actions;

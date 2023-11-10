@@ -1,5 +1,6 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { addRemoveAddon } from "./formSlice";
 
 const ExtentionWrapper = styled.li`
   label {
@@ -64,13 +65,24 @@ const ExtentionWrapper = styled.li`
   }
 `;
 
-function AddOn({ name, description, costs, isAdded }) {
+function AddOn({ id, name, description, costs, isAdded }) {
+  const dispatch = useDispatch();
   const { isYearly } = useSelector((state) => state.form);
   const cost = isYearly ? `${costs.yearly}/yr` : `${costs.monthly}/mo`;
 
+  function handleToggleAddon() {
+    dispatch(addRemoveAddon(id));
+  }
+
   return (
     <ExtentionWrapper>
-      <input type="checkbox" name="onlineService" id={name} checked={isAdded} />
+      <input
+        type="checkbox"
+        name="onlineService"
+        id={name}
+        checked={isAdded}
+        onChange={() => handleToggleAddon()}
+      />
       <label htmlFor={name}>
         <span>
           <h3>{name}</h3>
