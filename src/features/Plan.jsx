@@ -13,10 +13,6 @@ const PlanWrapper = styled.label`
   border-radius: 10px;
   user-select: none;
 
-  > :first-child {
-    margin-bottom: 1rem;
-  }
-
   h3 {
     font-weight: 700;
   }
@@ -26,6 +22,10 @@ const PlanWrapper = styled.label`
     align-items: flex-start;
     flex: 1 1 0;
     height: max-content;
+
+    > :first-child {
+      margin-bottom: 1rem;
+    }
   }
 `;
 
