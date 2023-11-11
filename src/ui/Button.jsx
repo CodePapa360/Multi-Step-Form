@@ -7,7 +7,7 @@ const StyledButton = styled.button`
   text-transform: capitalize;
 
   ${(props) =>
-    props.positon === "left" &&
+    props.position === "left" &&
     css`
       color: var(--cool-gray);
       background-color: transparent;
@@ -18,7 +18,7 @@ const StyledButton = styled.button`
     `}
 
   ${(props) =>
-    props.positon === "right" &&
+    props.position === "right" &&
     css`
       margin-left: auto;
       display: inline-block;
@@ -31,9 +31,9 @@ const StyledButton = styled.button`
     `}
 `;
 
-function Button({ positon, onClick, children }) {
+function Button({ position, onClick, children }) {
   return (
-    <StyledButton onClick={onClick} positon={positon}>
+    <StyledButton onClick={onClick} position={position}>
       {children}
     </StyledButton>
   );

@@ -12,26 +12,23 @@ export const allAddons = [
     name: "Online Service",
     description: "Access to multiplayer games",
     costs: { monthly: 1, yearly: 10 },
-    // isAdded: true,
   },
   {
     id: 25233,
     name: "Larger Storage",
     description: "Extra 1TB of cloud save",
     costs: { monthly: 2, yearly: 20 },
-    // isAdded: true,
   },
   {
     id: 25325,
     name: "Customizable Profile",
     description: "Custom theme on your profile",
     costs: { monthly: 2, yearly: 20 },
-    // isAdded: false,
   },
 ];
 
 const initialState = {
-  step: 3,
+  step: 2,
   name: "",
   email: "",
   phone: "",
@@ -77,6 +74,9 @@ const formSlice = createSlice({
     prevStep: (state) => {
       state.step = state.step - 1;
     },
+    goToStep: (state, action) => {
+      state.step = action.payload;
+    },
   },
 });
 
@@ -90,9 +90,20 @@ export const {
   addRemoveAddon,
   nextStep,
   prevStep,
+  goToStep,
 } = formSlice.actions;
 export default formSlice.reducer;
 
 export function getCurrentStep(state) {
   return state.form.step;
+}
+
+export function getSpecificPlanCost({ plan: selectedPlan, isYearly }) {
+  const myPlan = allPlans.find((plan) => plan.name === selectedPlan);
+
+  return isYearly ? myPlan.costs.yearly : myPlan.costs.monthly;
+}
+
+export function getSelectedAddons({ addOns: myAddonIds, allAddons }) {
+  return allAddons.filter((addon) => myAddonIds.includes(addon.id));
 }

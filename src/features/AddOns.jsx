@@ -51,11 +51,11 @@ function AddOns() {
       </FormInputs>
 
       <FormActions>
-        <Button onClick={handlePrev} positon="left">
+        <Button onClick={handlePrev} position="left">
           Go back
         </Button>
 
-        <Button onClick={handleNext} positon="right">
+        <Button onClick={handleNext} position="right">
           Next step
         </Button>
       </FormActions>

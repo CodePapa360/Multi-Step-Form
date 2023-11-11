@@ -4,9 +4,8 @@ import SubHeading from "../ui/SubHeading";
 import FormBody from "../ui/FormBody";
 import FormActions from "../ui/FormActions";
 import Button from "../ui/Button";
-import { addPersonalInfoData, prevStep } from "./formSlice";
+import { addPersonalInfoData } from "./formSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import FormInputs from "../ui/FormInputs";
 
@@ -39,7 +38,6 @@ function PersonalInfo() {
   const {
     register,
     handleSubmit,
-    getValues,
     formState: { errors },
   } = useForm({
     defaultValues: { name, email, phone },
@@ -98,7 +96,7 @@ function PersonalInfo() {
               required: "Phone number is required",
               pattern: {
                 value:
-                  /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+                  /^(\+\d{1,2}\s?)?1?[-. ]?\(?\d{3}\)?[-. ]?\d{3}[-. ]?\d{4}$/,
                 message: "Please provide your valid mobile number.",
               },
             })}
@@ -108,7 +106,7 @@ function PersonalInfo() {
       </FormInputs>
 
       <FormActions>
-        <Button type="submit" positon="right">
+        <Button type="submit" position="right">
           Next step
         </Button>
       </FormActions>

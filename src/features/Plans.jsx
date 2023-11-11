@@ -146,11 +146,11 @@ function Plans() {
       </FormInputs>
 
       <FormActions>
-        <Button onClick={handlePrev} positon="left">
+        <Button onClick={handlePrev} position="left">
           Go back
         </Button>
 
-        <Button type="submit" positon="right">
+        <Button type="submit" position="right">
           Next step
         </Button>
       </FormActions>

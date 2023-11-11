@@ -4,9 +4,16 @@ import SubHeading from "../ui/SubHeading";
 import FormBody from "../ui/FormBody";
 import FormActions from "../ui/FormActions";
 import Button from "../ui/Button";
-import { finishStep, prevStep } from "./formSlice";
-import { useDispatch } from "react-redux";
+import {
+  finishStep,
+  getSelectedAddons,
+  getSpecificPlanCost,
+  goToStep,
+  prevStep,
+} from "./formSlice";
+import { useDispatch, useSelector } from "react-redux";
 import FormInputs from "../ui/FormInputs";
+import { allAddons } from "./formSlice";
 
 const SummeryContainer = styled.div`
   display: flex;
@@ -21,36 +28,13 @@ const TopSummery = styled.div`
   gap: 0.5rem;
   padding: 1rem;
   border-radius: 10px;
-
-  > :first-child {
-    border-bottom: 1px solid var(--light-gray);
-    padding-bottom: 0.5rem;
-
-    > :first-child {
-      color: var(--marine-blue);
-      font-weight: 800;
-    }
-
-    > :last-child {
-      font-weight: 800;
-    }
-  }
 `;
 
-const Summery = styled.div`
+const AddonSummery = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
-
-  button {
-    background-color: transparent;
-    text-decoration: underline;
-    border: none;
-    font-weight: normal;
-    color: var(--cool-gray);
-    padding: 0;
-  }
 
   > :first-child {
     color: var(--cool-gray);
@@ -80,8 +64,44 @@ const TotalSummery = styled.div`
   }
 `;
 
+const Plan = styled.div`
+  border-bottom: 1px solid var(--light-gray);
+  padding-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > :first-child {
+    color: var(--marine-blue);
+    font-weight: 800;
+  }
+
+  > :last-child {
+    font-weight: 800;
+  }
+
+  button {
+    background-color: transparent;
+    text-decoration: underline;
+    border: none;
+    font-weight: normal;
+    color: var(--cool-gray);
+    padding: 0;
+  }
+`;
+
 function FinishingUp() {
   const dispatch = useDispatch();
+  const { isYearly, plan, addOns } = useSelector((state) => state.form);
+
+  const durationLongStr = isYearly ? "Yearly" : "Monthly";
+  const durationShortStr = isYearly ? "yr" : "mo";
+  const planCost = getSpecificPlanCost({ plan, isYearly });
+  const selectedAddons = getSelectedAddons({ addOns, allAddons });
+  const totalCost =
+    selectedAddons.reduce((acc, cur) => {
+      return (acc = acc + cur.costs[durationLongStr.toLowerCase()]);
+    }, 0) + planCost;
 
   function handleNext(e) {
     e.preventDefault();
@@ -104,40 +124,49 @@ function FinishingUp() {
 
         <SummeryContainer>
           <TopSummery>
-            <Summery>
+            <Plan>
               <div>
-                <p>Arcade(Monthly)</p>
-                <button>Change</button>
+                <p>
+                  {plan} ({durationLongStr})
+                </p>
+                <button onClick={() => dispatch(goToStep(2))}>Change</button>
               </div>
 
-              <p>$9/mo</p>
-            </Summery>
+              <p>
+                ${planCost}/{durationShortStr}
+              </p>
+            </Plan>
 
-            <Summery>
-              <p>Online service</p>
-              <p>+$1/mo</p>
-            </Summery>
-
-            <Summery>
-              <p>Larger Storage</p>
-              <p>+$2/mo</p>
-            </Summery>
+            {selectedAddons.map((addon) => {
+              return (
+                <AddonSummery key={addon.id}>
+                  <p>{addon.name}</p>
+                  <p>{`+$${
+                    isYearly
+                      ? `${addon.costs.yearly}/${durationShortStr}`
+                      : `${addon.costs.monthly}/${durationShortStr}`
+                  }`}</p>
+                </AddonSummery>
+              );
+            })}
           </TopSummery>
 
           <TotalSummery>
-            <p>Total (per month)</p>
-            <p>+$12/mo</p>
+            <p>Total (per {isYearly ? "year" : "month"})</p>
+            <p>
+              +${totalCost}/{durationShortStr}
+            </p>
           </TotalSummery>
         </SummeryContainer>
       </FormInputs>
 
       <FormActions>
-        <Button onClick={handlePrev} positon="left">
+        <Button onClick={handlePrev} position="left">
           Go back
         </Button>
 
-        <Button onClick={handleNext} positon="right">
-          Next step
+        <Button onClick={handleNext} position="right">
+          Confirm
         </Button>
       </FormActions>
     </FormBody>
