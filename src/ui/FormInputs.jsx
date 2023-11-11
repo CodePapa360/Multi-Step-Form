@@ -9,6 +9,16 @@ const StyledFormInputs = styled.div`
   margin-bottom: 1.5rem;
   color: var(--marine-blue);
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+
+  max-width: 670px;
+
+  @media screen and (min-width: 1000px) {
+    margin: 0;
+    width: auto;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: none;
+  }
 `;
 
 export default StyledFormInputs;

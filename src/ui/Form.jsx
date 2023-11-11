@@ -5,10 +5,7 @@ import Step3 from "../pages/Step3";
 import Step4 from "../pages/Step4";
 
 import { useSelector } from "react-redux";
-import FormActions from "./FormActions";
-import styled from "styled-components";
 import ThankYou from "../features/ThankYou";
-import { useState } from "react";
 
 function AppLayout() {
   const step = useSelector(getCurrentStep);

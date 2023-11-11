@@ -13,8 +13,19 @@ const PlanWrapper = styled.label`
   border-radius: 10px;
   user-select: none;
 
+  > :first-child {
+    margin-bottom: 1rem;
+  }
+
   h3 {
     font-weight: 700;
+  }
+
+  @media screen and (min-width: 1000px) {
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 1 0;
+    height: max-content;
   }
 `;
 

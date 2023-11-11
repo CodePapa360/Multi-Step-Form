@@ -27,6 +27,12 @@ const StyledThankYou = styled.div`
   p {
     color: var(--cool-gray);
   }
+
+  @media screen and (min-width: 1000px) {
+    margin-top: 0;
+    box-shadow: none;
+    align-self: center;
+  }
 `;
 
 function ThankYou() {

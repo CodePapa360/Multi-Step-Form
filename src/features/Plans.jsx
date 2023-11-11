@@ -23,6 +23,12 @@ const PlansContainer = styled.div`
     border-color: var(--purplish-blue);
     background-color: var(--magnolia);
   }
+
+  @media screen and (min-width: 1000px) {
+    flex-direction: row;
+    /* background-color: red; */
+    min-height: 11rem;
+  }
 `;
 
 const DurationContainer = styled.div`

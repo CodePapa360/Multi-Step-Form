@@ -10,12 +10,43 @@ const StyledSidebar = styled.ul`
 
   display: flex;
   justify-content: center;
+
   gap: 1rem;
-  /* width: 100%; */
+
+  @media screen and (min-width: 1000px) {
+    flex-direction: column;
+    background-image: url("./images/bg-sidebar-desktop.svg");
+    border-radius: 10px;
+    height: 100%;
+    padding: 2rem;
+    justify-content: flex-start;
+  }
+`;
+
+const StepItemContainer = styled.li`
+  @media screen and (min-width: 1000px) {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: var(--white);
+    gap: 1rem;
+  }
 `;
 
 const StepInfo = styled.span`
   display: none;
+
+  > :first-child {
+    opacity: 0.7;
+  }
+
+  > :last-child {
+    font-weight: 800;
+  }
+
+  @media screen and (min-width: 1000px) {
+    display: inline-block;
+  }
 `;
 
 const StepNum = styled.span`
@@ -36,6 +67,10 @@ const StepNum = styled.span`
     background-color: var(--light-blue);
     color: var(--marine-blue);
   }
+
+  @media screen and (min-width: 1000px) {
+    margin-top: 0;
+  }
 `;
 
 function Sidebar() {
@@ -43,37 +78,37 @@ function Sidebar() {
 
   return (
     <StyledSidebar>
-      <li>
+      <StepItemContainer>
         <StepNum className={step === 1 && "active"}>1</StepNum>
         <StepInfo>
           <p>Step 1</p>
           <p>Your info</p>
         </StepInfo>
-      </li>
+      </StepItemContainer>
 
-      <li>
+      <StepItemContainer>
         <StepNum className={step === 2 && "active"}>2</StepNum>
         <StepInfo>
           <p>Step 2</p>
           <p>Select plan</p>
         </StepInfo>
-      </li>
+      </StepItemContainer>
 
-      <li>
+      <StepItemContainer>
         <StepNum className={step === 3 && "active"}>3</StepNum>
         <StepInfo>
           <p>Step 3</p>
           <p>Add-ons</p>
         </StepInfo>
-      </li>
+      </StepItemContainer>
 
-      <li>
+      <StepItemContainer>
         <StepNum className={(step === 4 || step === 5) && "active"}>4</StepNum>
         <StepInfo>
           <p>Step 4</p>
           <p>Summary</p>
         </StepInfo>
-      </li>
+      </StepItemContainer>
     </StyledSidebar>
   );
 }
