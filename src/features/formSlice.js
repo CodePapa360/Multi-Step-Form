@@ -28,7 +28,7 @@ export const allAddons = [
 ];
 
 const initialState = {
-  step: 2,
+  step: 1,
   name: "",
   email: "",
   phone: "",
