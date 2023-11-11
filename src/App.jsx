@@ -31,7 +31,7 @@ const StyledApp = styled.div`
     justify-content: center;
     padding: 1rem;
     background-color: var(--white);
-    border-radius: 10px;
+    border-radius: 16px;
 
     min-height: unset;
     /* background-color: red; */
