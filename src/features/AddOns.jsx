@@ -5,9 +5,10 @@ import FormBody from "../ui/FormBody";
 import FormActions from "../ui/FormActions";
 import Button from "../ui/Button";
 import { addAddonsData, prevStep } from "./formSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import FormInputs from "../ui/FormInputs";
 import AddOn from "./AddOn";
+import { allAddons } from "./formSlice";
 
 const AddonsContainer = styled.ul`
   display: flex;
@@ -16,7 +17,6 @@ const AddonsContainer = styled.ul`
 `;
 
 function AddOns() {
-  const { addOns } = useSelector((state) => state.form);
   const dispatch = useDispatch();
 
   function handleNext(e) {
@@ -37,12 +37,12 @@ function AddOns() {
         <SubHeading>Add-ons help enhance your gaming experience.</SubHeading>
 
         <AddonsContainer>
-          {addOns.map((addon) => (
+          {allAddons.map((addon) => (
             <AddOn
               id={addon.id}
               name={addon.name}
               description={addon.description}
-              isAdded={addon.isAdded}
+              // isAdded={addon.isAdded}
               costs={addon.costs}
               key={addon.id}
             />

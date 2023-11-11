@@ -6,38 +6,38 @@ export const allPlans = [
   { name: "Pro", costs: { monthly: 15, yearly: 150 } },
 ];
 
-const addOns = [
+export const allAddons = [
   {
     id: 45325,
     name: "Online Service",
     description: "Access to multiplayer games",
     costs: { monthly: 1, yearly: 10 },
-    isAdded: true,
+    // isAdded: true,
   },
   {
     id: 25233,
     name: "Larger Storage",
     description: "Extra 1TB of cloud save",
     costs: { monthly: 2, yearly: 20 },
-    isAdded: true,
+    // isAdded: true,
   },
   {
     id: 25325,
     name: "Customizable Profile",
     description: "Custom theme on your profile",
     costs: { monthly: 2, yearly: 20 },
-    isAdded: false,
+    // isAdded: false,
   },
 ];
 
 const initialState = {
-  step: 2,
+  step: 3,
   name: "",
   email: "",
   phone: "",
   isYearly: false,
   plan: "Advanced",
-  addOns,
+  addOns: [45325, 25325],
 };
 
 const formSlice = createSlice({
@@ -66,12 +66,11 @@ const formSlice = createSlice({
       state.plan = action.payload;
     },
     addRemoveAddon: (state, action) => {
-      const addonIndex = state.addOns.findIndex(
-        (addon) => addon.id === Number(action.payload)
-      );
-      state.addOns[addonIndex].isAdded = !state.addOns[addonIndex].isAdded;
+      const isAdded = state.addOns.includes(action.payload);
+      if (!isAdded) state.addOns.push(action.payload);
+      else
+        state.addOns = state.addOns.filter((addon) => addon !== action.payload);
     },
-
     nextStep: (state) => {
       state.step = state.step + 1;
     },
