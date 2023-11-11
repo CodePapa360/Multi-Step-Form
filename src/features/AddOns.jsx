@@ -21,7 +21,6 @@ function AddOns() {
 
   function handleNext(e) {
     e.preventDefault();
-
     dispatch(addAddonsData());
   }
 
@@ -42,7 +41,6 @@ function AddOns() {
               id={addon.id}
               name={addon.name}
               description={addon.description}
-              // isAdded={addon.isAdded}
               costs={addon.costs}
               key={addon.id}
             />
