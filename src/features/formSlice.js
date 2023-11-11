@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const plans = {
-  arcade: { monthly: 9, yearly: 90 },
-  advanced: { monthly: 12, yearly: 120 },
-  pro: { monthly: 15, yearly: 150 },
-};
+export const allPlans = [
+  { name: "Arcade", costs: { monthly: 9, yearly: 90 } },
+  { name: "Advanced", costs: { monthly: 12, yearly: 120 } },
+  { name: "Pro", costs: { monthly: 15, yearly: 150 } },
+];
 
 const addOns = [
   {
@@ -31,15 +31,12 @@ const addOns = [
 ];
 
 const initialState = {
-  step: 3,
+  step: 2,
   name: "",
   email: "",
   phone: "",
   isYearly: false,
-  plan: {
-    name: Object.keys(plans)[0],
-    charge: Object.values(plans)[0]["monthly"],
-  },
+  plan: "Advanced",
   addOns,
 };
 
@@ -53,24 +50,20 @@ const formSlice = createSlice({
       state.phone = action.payload.phone;
       state.step = state.step + 1;
     },
-    addPlanData: (state, action) => {
+    addPlanData: (state) => {
       state.step = state.step + 1;
     },
-    addAddonsData: (state, action) => {
+    addAddonsData: (state) => {
       state.step = state.step + 1;
     },
-    finishStep: (state, action) => {
+    finishStep: (state) => {
       state.step = state.step + 1;
     },
     toggleDuration: (state) => {
       state.isYearly = !state.isYearly;
-      const duration = state.isYearly ? "yearly" : "monthly";
-      state.plan.charge = plans[state.plan.name][duration];
     },
     updatePlan: (state, action) => {
-      state.plan.name = action.payload;
-      const duration = state.isYearly ? "yearly" : "monthly";
-      state.plan.charge = plans[action.payload][duration];
+      state.plan = action.payload;
     },
     addRemoveAddon: (state, action) => {
       const addonIndex = state.addOns.findIndex(

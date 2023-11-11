@@ -3,16 +3,11 @@ import Heading from "../ui/Heading";
 import SubHeading from "../ui/SubHeading";
 import FormBody from "../ui/FormBody";
 import FormActions from "../ui/FormActions";
-import {
-  plans,
-  nextStep,
-  prevStep,
-  toggleDuration,
-  updatePlan,
-} from "./formSlice";
+import { allPlans, nextStep, prevStep, toggleDuration } from "./formSlice";
 import Button from "../ui/Button";
 import { useDispatch, useSelector } from "react-redux";
 import FormInputs from "../ui/FormInputs";
+import Plan from "./Plan";
 
 const PlansContainer = styled.div`
   display: flex;
@@ -27,26 +22,6 @@ const PlansContainer = styled.div`
   input[type="radio"]:checked + label {
     border-color: var(--purplish-blue);
     background-color: var(--magnolia);
-  }
-`;
-
-const PlanWrapper = styled.label`
-  display: flex;
-  justify-content: flex-start;
-  gap: 1rem;
-  align-items: center;
-  border: 2px solid var(--light-gray);
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 10px;
-  user-select: none;
-
-  h3 {
-    font-weight: 700;
-  }
-
-  p {
-    color: var(--cool-gray);
   }
 `;
 
@@ -132,7 +107,7 @@ const Duration = styled.label`
 
 function Plans() {
   const dispatch = useDispatch();
-  const { isYearly, plan } = useSelector((state) => state.form);
+  const { isYearly } = useSelector((state) => state.form);
 
   function handlePrev() {
     dispatch(prevStep());
@@ -151,66 +126,9 @@ function Plans() {
         </SubHeading>
 
         <PlansContainer>
-          <input
-            type="radio"
-            name="plan"
-            id="arcade"
-            onChange={() => dispatch(updatePlan("arcade"))}
-            checked={plan.name === "arcade"}
-          />
-          <PlanWrapper htmlFor="arcade">
-            <span>
-              <img src="/images/icon-arcade.svg" alt="Arcade" />
-            </span>
-            <span>
-              <h3>Arcade</h3>
-              <p>{`$${
-                isYearly
-                  ? `${plans.arcade.yearly}/yr`
-                  : `${plans.arcade.monthly}/mo`
-              }`}</p>
-            </span>
-          </PlanWrapper>
-
-          <input
-            type="radio"
-            name="plan"
-            id="advanced"
-            onChange={() => dispatch(updatePlan("advanced"))}
-            checked={plan.name === "advanced"}
-          />
-          <PlanWrapper htmlFor="advanced">
-            <span>
-              <img src="/images/icon-advanced.svg" alt="advanced" />
-            </span>
-            <span>
-              <h3>Advanced</h3>
-              <p>{`$${
-                isYearly
-                  ? `${plans.advanced.yearly}/yr`
-                  : `${plans.advanced.monthly}/mo`
-              }`}</p>
-            </span>
-          </PlanWrapper>
-
-          <input
-            type="radio"
-            name="plan"
-            id="pro"
-            onChange={() => dispatch(updatePlan("pro"))}
-            checked={plan.name === "pro"}
-          />
-          <PlanWrapper htmlFor="pro">
-            <span>
-              <img src="/images/icon-pro.svg" alt="pro" />
-            </span>
-            <span>
-              <h3>Pro</h3>
-              <p>{`$${
-                isYearly ? `${plans.pro.yearly}/yr` : `${plans.pro.monthly}/mo`
-              }`}</p>
-            </span>
-          </PlanWrapper>
+          {allPlans.map((plan) => (
+            <Plan plan={plan} key={plan.name} />
+          ))}
         </PlansContainer>
 
         <DurationContainer>
