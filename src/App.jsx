@@ -10,7 +10,7 @@ const StyledApp = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100dvh;
+  min-height: 100vh;
 `;
 
 const Container = styled.div`

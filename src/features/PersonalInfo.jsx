@@ -55,6 +55,16 @@ const Input = styled.input.withConfig({
     border-color: ${(props) =>
       props.error === "true" ? "var(--strawberry-red)" : ""};
   }
+
+  &[type="number"]::-webkit-outer-spin-button,
+  &[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
 `;
 
 function PersonalInfo() {
@@ -101,7 +111,7 @@ function PersonalInfo() {
           <Input
             error={`${!!errors.name}`}
             autoComplete="off"
-            type="text"
+            type="email"
             name="email"
             id="email"
             placeholder="e.g stephenking.lorem.com"
@@ -123,7 +133,7 @@ function PersonalInfo() {
           <Input
             error={`${!!errors.name}`}
             autoComplete="off"
-            type="text"
+            type="number"
             name="phone"
             id="phone"
             placeholder="e.g +1 234 567 890"
