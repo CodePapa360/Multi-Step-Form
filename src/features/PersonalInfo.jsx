@@ -88,7 +88,7 @@ function PersonalInfo() {
   }
 
   return (
-    <FormBody onSubmit={handleSubmit(handleNext)}>
+    <FormBody onSubmit={handleSubmit(handleNext)} noValidate>
       <FormInputs>
         <Heading>Personal info</Heading>
         <SubHeading>
