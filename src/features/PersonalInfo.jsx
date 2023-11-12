@@ -138,7 +138,7 @@ function PersonalInfo() {
           <Input
             error={`${!!errors.phone}`}
             autoComplete="off"
-            type="number"
+            type="text"
             name="phone"
             id="phone"
             placeholder="e.g +1 234 567 890"
