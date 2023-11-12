@@ -48,7 +48,7 @@ This React project demonstrates a multi-step form. The form utilizes React Hook 
 
 </a>
 
-## Table of contents
+## 📚Table of contents
 
 - [Key Features](#key-features)
 - [My process](#my-process)
@@ -59,7 +59,7 @@ This React project demonstrates a multi-step form. The form utilizes React Hook 
 - [Acknowledgments](#acknowledgments)
 - [License](#license)
 
-## Key Features
+## 🎉Key Features
 
 Users should be able to:
 
@@ -73,16 +73,16 @@ Users should be able to:
 - See hover and focus states for all interactive elements on the page
 - View the optimal layout for the interface depending on their device's screen size
 
-## My process
+## 🛠️My process
 
-### Built with
+### 🏗️Built with
 
 - React
 - React Hook Form
 - Styled Components
 - Vite
 
-### What I Learned
+### 💡What I Learned
 
 - **Breaking down complex forms into manageable steps:** I learned that multi-step forms can significantly improve user engagement and reduce form abandonment by breaking down complex data collection processes into smaller, more manageable steps.
 
@@ -90,7 +90,7 @@ Users should be able to:
 
 - **Leveraging Redux Toolkit for state management:** I explored the power of Redux Toolkit for managing the form's state, facilitating consistent data handling and easy updates.
 
-## Installation
+## 📥Installation
 
 - Clone this repo:
 
@@ -116,9 +116,9 @@ npm run build
 npm run dev
 ```
 
-## Author
+## 👤Author
 
-<b>👤 Alamin</b>
+<b>Alamin</b>
 
 - Twitter - [@CodePapa360](https://www.twitter.com/CodePapa360)
 - LinkedIn - [@CodePapa360](https://www.linkedin.com/in/codepapa360)
@@ -127,14 +127,14 @@ npm run dev
 
 Feel free to contact me with any questions or feedback!
 
-## Star this project🌟
+## 🌟Star this project
 
 Show your appreciation by starring this project on GitHub.🙂 Your support will motivate me to continue creating and sharing valuable open-source projects
 
-## Acknowledgments
+## 🙏Acknowledgments
 
 I would like to express my gratitude to Frontend Mentor for providing the challenge and inspiration to build this project. Their platform and resources have been instrumental in my learning journey and the development of this project.
 
-## License
+## 📜License
 
 This project is licensed under the [MIT](./LICENSE.md) License - see the LICENSE file for details.
