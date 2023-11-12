@@ -5,10 +5,10 @@ import FormBody from "../ui/FormBody";
 import FormActions from "../ui/FormActions";
 import Button from "../ui/Button";
 import {
-  finishStep,
   getSelectedAddons,
   getSpecificPlanCost,
   goToStep,
+  nextStep,
   prevStep,
 } from "./formSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -106,7 +106,7 @@ function FinishingUp() {
 
   function handleNext(e) {
     e.preventDefault();
-    dispatch(finishStep());
+    dispatch(nextStep());
   }
 
   function handlePrev(e) {

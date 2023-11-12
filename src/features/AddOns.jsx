@@ -4,7 +4,7 @@ import SubHeading from "../ui/SubHeading";
 import FormBody from "../ui/FormBody";
 import FormActions from "../ui/FormActions";
 import Button from "../ui/Button";
-import { addAddonsData, prevStep } from "./formSlice";
+import { nextStep, prevStep } from "./formSlice";
 import { useDispatch } from "react-redux";
 import FormInputs from "../ui/FormInputs";
 import AddOn from "./AddOn";
@@ -21,7 +21,7 @@ function AddOns() {
 
   function handleNext(e) {
     e.preventDefault();
-    dispatch(addAddonsData());
+    dispatch(nextStep());
   }
 
   function handlePrev(e) {
