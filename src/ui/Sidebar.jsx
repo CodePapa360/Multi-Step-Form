@@ -32,7 +32,7 @@ const StepItemContainer = styled.li`
   }
 `;
 
-const StepInfo = styled.span`
+const StepInfo = styled.p`
   display: none;
 
   > :first-child {
@@ -80,32 +80,32 @@ function Sidebar() {
       <StepItemContainer>
         <StepNum className={step === 1 && "active"}>1</StepNum>
         <StepInfo>
-          <p>Step 1</p>
-          <p>Your info</p>
+          <span>Step 1</span>
+          <span>Your info</span>
         </StepInfo>
       </StepItemContainer>
 
       <StepItemContainer>
         <StepNum className={step === 2 && "active"}>2</StepNum>
         <StepInfo>
-          <p>Step 2</p>
-          <p>Select plan</p>
+          <span>Step 2</span>
+          <span>Select plan</span>
         </StepInfo>
       </StepItemContainer>
 
       <StepItemContainer>
         <StepNum className={step === 3 && "active"}>3</StepNum>
         <StepInfo>
-          <p>Step 3</p>
-          <p>Add-ons</p>
+          <span>Step 3</span>
+          <span>Add-ons</span>
         </StepInfo>
       </StepItemContainer>
 
       <StepItemContainer>
         <StepNum className={(step === 4 || step === 5) && "active"}>4</StepNum>
         <StepInfo>
-          <p>Step 4</p>
-          <p>Summary</p>
+          <span>Step 4</span>
+          <span>Summary</span>
         </StepInfo>
       </StepItemContainer>
     </StyledSidebar>

@@ -11,7 +11,7 @@
   </h3>
 
   <div align="center">
-    <a href="https://multi-step-form-codepapa.vercel.app">Solution (FEM)</a>
+    <a href="https://www.frontendmentor.io/solutions/multi-step-form-w-react-and-redux-toolkit-XaJTbJ92Xn">Solution (FEM)</a>
     •
     <a href="https://github.com/CodePapa360/Multi-Step-Form/issues">Report Bug</a>
     •
@@ -75,7 +75,7 @@ Users should be able to:
 
 ## My process🛠️
 
-### Built with🏗️
+### Tech Stack🏗️
 
 - React
 - React Hook Form

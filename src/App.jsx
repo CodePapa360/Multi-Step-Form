@@ -5,7 +5,7 @@ import Form from "./ui/Form";
 import Sidebar from "./ui/Sidebar";
 import styled from "styled-components";
 
-const StyledApp = styled.div`
+const StyledApp = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,8 +25,7 @@ const Container = styled.div`
   @media screen and (min-width: ${breakpoints.md}) {
     grid-template-columns: 18rem 1fr;
     grid-template-rows: minmax(35rem, auto);
-    align-items: center;
-    justify-content: center;
+    margin-top: auto;
     padding: 1rem;
     background-color: var(--white);
     border-radius: 16px;
