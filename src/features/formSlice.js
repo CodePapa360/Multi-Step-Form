@@ -42,6 +42,7 @@ const formSlice = createSlice({
   initialState,
   reducers: {
     addPersonalInfoData: (state, action) => {
+      console.log(action.payload.phone);
       state.name = action.payload.name;
       state.email = action.payload.email;
       state.phone = action.payload.phone;

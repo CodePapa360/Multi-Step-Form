@@ -138,15 +138,15 @@ function PersonalInfo() {
           <Input
             error={`${!!errors.phone}`}
             autoComplete="off"
-            type="text"
+            type="tel"
             name="phone"
             id="phone"
             placeholder="e.g +1 234 567 890"
             {...register("phone", {
               required: "Phone number is required",
               pattern: {
-                value: phoneRegex,
-                message: "Please provide your valid mobile number.",
+                value: /^[\d\s()+-]{7,15}$/,
+                message: "Please provide a valid mobile number.",
               },
             })}
           />
