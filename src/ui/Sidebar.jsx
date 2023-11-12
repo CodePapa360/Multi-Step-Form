@@ -44,7 +44,8 @@ const StepInfo = styled.p`
   }
 
   @media screen and (min-width: ${breakpoints.md}) {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
