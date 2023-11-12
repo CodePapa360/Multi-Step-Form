@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoints } from "../styles/GlobalStyles";
 
 const StyledHeading = styled.h2`
   margin-bottom: 1rem;
@@ -6,7 +7,7 @@ const StyledHeading = styled.h2`
   font-size: 1.5rem;
   margin: 0;
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: ${breakpoints.md}) {
     font-size: 2rem;
   }
 `;

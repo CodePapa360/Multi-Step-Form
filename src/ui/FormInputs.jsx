@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { breakpoints } from "../styles/GlobalStyles";
+
 const StyledFormInputs = styled.div`
   background-color: var(--white);
   padding: 1.5rem;
@@ -12,7 +14,7 @@ const StyledFormInputs = styled.div`
 
   max-width: 670px;
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: ${breakpoints.md}) {
     margin: 0;
     width: auto;
     border-bottom-left-radius: 0;

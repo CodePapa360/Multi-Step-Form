@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Heading from "../ui/Heading";
+import { breakpoints } from "../styles/GlobalStyles";
 
 const StyledThankYou = styled.div`
   display: flex;
@@ -28,7 +29,7 @@ const StyledThankYou = styled.div`
     color: var(--cool-gray);
   }
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: ${breakpoints.md}) {
     margin-top: 0;
     box-shadow: none;
     align-self: center;

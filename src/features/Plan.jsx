@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { updatePlan } from "./formSlice";
+import { breakpoints } from "../styles/GlobalStyles";
 
 const PlanWrapper = styled.label`
   display: flex;
@@ -17,7 +18,7 @@ const PlanWrapper = styled.label`
     font-weight: 700;
   }
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: ${breakpoints.md}) {
     flex-direction: column;
     align-items: flex-start;
     flex: 1 1 0;

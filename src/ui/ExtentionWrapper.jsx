@@ -36,7 +36,7 @@ const ExtentionWrapper = styled.li`
   //////////
 
   label::before {
-    content: "✔";
+    content: "";
     height: 1.2rem;
     width: 1.2rem;
     background-color: var(--white);
@@ -53,6 +53,7 @@ const ExtentionWrapper = styled.li`
   }
 
   input:checked + label::before {
+    content: "✔";
     background-color: var(--purplish-blue);
     border: 2px solid var(--purplish-blue);
   }

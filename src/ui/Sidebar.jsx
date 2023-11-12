@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { getCurrentStep } from "../features/formSlice";
 import styled from "styled-components";
+import { breakpoints } from "../styles/GlobalStyles";
 
 const StyledSidebar = styled.ul`
   background-image: url("./images/bg-sidebar-mobile.svg");
@@ -13,7 +14,7 @@ const StyledSidebar = styled.ul`
 
   gap: 1rem;
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: ${breakpoints.md}) {
     flex-direction: column;
     background-image: url("./images/bg-sidebar-desktop.svg");
     border-radius: 10px;
@@ -24,7 +25,7 @@ const StyledSidebar = styled.ul`
 `;
 
 const StepItemContainer = styled.li`
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: ${breakpoints.md}) {
     display: flex;
     align-items: center;
     text-transform: uppercase;
@@ -44,7 +45,7 @@ const StepInfo = styled.span`
     font-weight: 800;
   }
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: ${breakpoints.md}) {
     display: inline-block;
   }
 `;
@@ -68,7 +69,7 @@ const StepNum = styled.span`
     color: var(--marine-blue);
   }
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: ${breakpoints.md}) {
     margin-top: 0;
   }
 `;

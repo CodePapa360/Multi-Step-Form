@@ -1,4 +1,4 @@
-import GlobalStyles from "./styles/GlobalStyles";
+import GlobalStyles, { breakpoints } from "./styles/GlobalStyles";
 
 import Form from "./ui/Form";
 import Sidebar from "./ui/Sidebar";
@@ -9,10 +9,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100dvh;
-
-  /* @media screen and (min-width: 1000px) {
-    background-color: red;
-  } */
 `;
 
 const StyledApp = styled.div`
@@ -21,10 +17,10 @@ const StyledApp = styled.div`
   grid-template-rows: 12rem 1fr;
 
   min-height: 100dvh;
-  max-width: 900px;
+  max-width: ${breakpoints.md};
   width: 100%;
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: ${breakpoints.md}) {
     grid-template-columns: 18rem 1fr;
     grid-template-rows: minmax(35rem, auto);
     align-items: center;
@@ -34,7 +30,6 @@ const StyledApp = styled.div`
     border-radius: 16px;
 
     min-height: unset;
-    /* background-color: red; */
     gap: 3rem;
   }
 `;

@@ -33,8 +33,8 @@ const initialState = {
   email: "",
   phone: "",
   isYearly: false,
-  plan: "Advanced",
-  addOns: [45325, 25325],
+  plan: allPlans[1].name,
+  addOns: [allAddons[0].id, allAddons[2].id],
 };
 
 const formSlice = createSlice({

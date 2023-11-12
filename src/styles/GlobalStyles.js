@@ -1,5 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 
+export const breakpoints = {
+  xs: "320px", // Extra small devices (phones)
+  sm: "768px", // Small devices (tablets)
+  md: "992px", // Medium devices (desktops)
+  lg: "1200px", // Large devices (desktops)
+  xl: "1440px", // Extra large devices (desktops)
+};
+
 const GlobalStyles = createGlobalStyle`
 
 body{

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoints } from "../styles/GlobalStyles";
 
 const StyledFormBody = styled.form`
   display: flex;
@@ -6,7 +7,7 @@ const StyledFormBody = styled.form`
   justify-content: space-between;
   height: 100%;
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: ${breakpoints.md}) {
     margin-top: 0;
     /* justify-content: center; */
   }

@@ -8,6 +8,7 @@ import Button from "../ui/Button";
 import { useDispatch, useSelector } from "react-redux";
 import FormInputs from "../ui/FormInputs";
 import Plan from "./Plan";
+import { breakpoints } from "../styles/GlobalStyles";
 
 const PlansContainer = styled.div`
   display: flex;
@@ -24,7 +25,7 @@ const PlansContainer = styled.div`
     background-color: var(--magnolia);
   }
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: ${breakpoints.md}) {
     flex-direction: row;
     /* background-color: red; */
     min-height: 11rem;
