@@ -10,6 +10,8 @@ export const breakpoints = {
 
 const GlobalStyles = createGlobalStyle`
 
+
+
 body{
   font-family: 'Ubuntu', sans-serif;
   background-color: var(--magnolia);
@@ -30,6 +32,18 @@ body{
 --magnolia: hsl(217, 100%, 97%);
 --alabaster: hsl(231, 100%, 99%);
 --white: hsl(0, 0%, 100%);
+}
+
+.sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /////////////////

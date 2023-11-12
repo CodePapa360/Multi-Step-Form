@@ -1,17 +1,19 @@
 import GlobalStyles, { breakpoints } from "./styles/GlobalStyles";
+import Footer from "./ui/Footer";
 
 import Form from "./ui/Form";
 import Sidebar from "./ui/Sidebar";
 import styled from "styled-components";
 
-const Container = styled.div`
+const StyledApp = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100dvh;
 `;
 
-const StyledApp = styled.div`
+const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 12rem 1fr;
@@ -37,12 +39,15 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <Container>
-        <StyledApp>
+      <StyledApp>
+        <h1 className="sr-only">Multi Step Form Solution - Frontend Mentor</h1>
+        <Container>
           <Sidebar />
           <Form />
-        </StyledApp>
-      </Container>
+        </Container>
+
+        <Footer />
+      </StyledApp>
     </>
   );
 }
