@@ -1,118 +1,140 @@
-# Frontend Mentor - Multi-step form solution
+<div align="center">
 
-This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+  <img src="./public/images/favicon-32x32.png" alt="logo" width="30" height="auto">
+
+  <h2>Multi Step Form</h2>
+
+  <h3>
+    <a href="https://multi-step-form-codepapa.vercel.app">
+      <strong>Demo Website</strong>
+    </a>
+  </h3>
+
+  <div align="center">
+    <a href="https://multi-step-form-codepapa.vercel.app">Solution (FEM)</a>
+    •
+    <a href="https://github.com/CodePapa360/The-Wild-Oasis/issues">Report Bug</a>
+    •
+    <a href="https://github.com/CodePapa360/The-Wild-Oasis/pulls">Request Feature</a>
+  </div>
+
+  <hr>
+
+</div>
+
+<!-- Badges -->
+<div align="center">
+
+<!-- Status -->
+<img src="https://img.shields.io/badge/Status-Completed-success?style=flat" alt="Status" />
+
+<!-- Liceensee -->
+<img src="https://img.shields.io/badge/License-MIT-blue?style=flat" alt="License" />
+
+<a href='https://www.twitter.com/CodePapa360' target="_blank"><img alt='Twitter' src='https://img.shields.io/badge/@CodePapa360-100000?style=for-the-badge&logo=Twitter&logoColor=00C9F7&labelColor=3F3F3F&color=0092FA'/></a>
+<a href='https://www.linkedin.com/in/codepapa360' target="_blank"><img alt='LinkedIn' src='https://img.shields.io/badge/@CodePapa360-100000?style=for-the-badge&logo=LinkedIn&logoColor=00a0dc&labelColor=2F2F2F&color=0077b5'/></a>
+
+</div>
+
+<!-- Brief -->
+<p align="center">
+This React project demonstrates a multi-step form. The form utilizes React Hook Form for data validation and Redux Toolkit for state management, enhancing user experience and data integrity.
+</p>
+
+<!-- Screenshot -->
+<a align="center" href="https://multi-step-form-codepapa.vercel.app">
+
+![Screenshot](./public/thumbnail-preview.png)
+
+</a>
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
+- [Key Features](#key-features)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
+- [Installation](#installation)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
+- [License](#license)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
-## Overview
-
-### The challenge
+## Key Features
 
 Users should be able to:
 
 - Complete each step of the sequence
 - Go back to a previous step to update their selections
 - See a summary of their selections on the final step and confirm their order
-- View the optimal layout for the interface depending on their device's screen size
-- See hover and focus states for all interactive elements on the page
 - Receive form validation messages if:
   - A field has been missed
   - The email address is not formatted correctly
   - A step is submitted, but no selection has been made
-
-### Screenshot
-
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
-
-### Links
-
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- See hover and focus states for all interactive elements on the page
+- View the optimal layout for the interface depending on their device's screen size
 
 ## My process
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- React
+- React Hook Form
+- Styled Components
+- Vite
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+### What I Learned
 
-### What I learned
+- **Breaking down complex forms into manageable steps:** I learned that multi-step forms can significantly improve user engagement and reduce form abandonment by breaking down complex data collection processes into smaller, more manageable steps.
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+- **Implementing data validation with React Hook Form:** I gained experience in utilizing React Hook Form to effectively validate user inputs, ensuring data integrity and preventing invalid submissions.
 
-To see how you can add code snippets, see below:
+- **Leveraging Redux Toolkit for state management:** I explored the power of Redux Toolkit for managing the form's state, facilitating consistent data handling and easy updates.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+## Installation
+
+- Clone this repo:
+
+```sh
+git clone https://github.com/CodePapa360/Multi-Step-Form.git
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+- Install dependencies:
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+```sh
+npm install
+```
 
-### Continued development
+- Build command:
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+```sh
+npm run build
+```
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+- Live server:
 
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+```sh
+npm run dev
+```
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+<b>👤 Alamin</b>
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- Twitter - [@CodePapa360](https://www.twitter.com/CodePapa360)
+- LinkedIn - [@CodePapa360](https://www.linkedin.com/in/codepapa360)
+- Frontend Mentor - [@CodePapa360](https://www.frontendmentor.io/profile/CodePapa360)
+- Github: [@CodePapa360](https://github.com/codepapa360)
+
+Feel free to contact me with any questions or feedback!
+
+## Star this project🌟
+
+Show your appreciation by starring this project on GitHub.🙂 Your support will motivate me to continue creating and sharing valuable open-source projects
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+I would like to express my gratitude to Frontend Mentor for providing the challenge and inspiration to build this project. Their platform and resources have been instrumental in my learning journey and the development of this project.
 
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+## License
+
+This project is licensed under the [MIT](./LICENSE.md) License - see the LICENSE file for details.
