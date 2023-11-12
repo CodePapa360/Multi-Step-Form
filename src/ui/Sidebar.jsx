@@ -1,6 +1,6 @@
+import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { getCurrentStep } from "../features/formSlice";
-import styled from "styled-components";
 import { breakpoints } from "../styles/GlobalStyles";
 
 const StyledSidebar = styled.ul`
@@ -8,10 +8,8 @@ const StyledSidebar = styled.ul`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
   display: flex;
   justify-content: center;
-
   gap: 1rem;
 
   @media screen and (min-width: ${breakpoints.md}) {

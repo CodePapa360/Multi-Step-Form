@@ -96,6 +96,7 @@ function FinishingUp() {
 
   const durationLongStr = isYearly ? "Yearly" : "Monthly";
   const durationShortStr = isYearly ? "yr" : "mo";
+
   const planCost = getSpecificPlanCost({ plan, isYearly });
   const selectedAddons = getSelectedAddons({ addOns, allAddons });
   const totalCost =
@@ -105,7 +106,6 @@ function FinishingUp() {
 
   function handleNext(e) {
     e.preventDefault();
-
     dispatch(finishStep());
   }
 

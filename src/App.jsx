@@ -28,7 +28,6 @@ const StyledApp = styled.div`
     padding: 1rem;
     background-color: var(--white);
     border-radius: 16px;
-
     min-height: unset;
     gap: 3rem;
   }

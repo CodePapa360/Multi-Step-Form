@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 
-const StyledButton = styled.button`
+const StyledButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => "position" !== prop,
+})`
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 5px;

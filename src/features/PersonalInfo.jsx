@@ -8,27 +8,52 @@ import { addPersonalInfoData } from "./formSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import FormInputs from "../ui/FormInputs";
+import { breakpoints } from "../styles/GlobalStyles";
+import InputErrorMessage from "../ui/InputErrorMessage";
 
 const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
+  min-height: 5.5rem;
+  align-content: start;
+  display: grid;
+  grid-template-areas:
+    "label"
+    "input"
+    "error";
+
+  @media screen and (min-width: ${breakpoints.md}) {
+    grid-template-areas:
+      "label error"
+      "input input";
+    grid-template-columns: auto 1fr;
+  }
 
   label {
     font-size: 0.9rem;
     font-weight: 500;
+    grid-area: label;
   }
 
-  input {
-    padding: 0.5rem 1rem;
-    outline: none;
-    border: 2px solid var(--light-gray);
-    border-radius: 5px;
-    font-weight: 500;
+  p {
+    grid-area: error;
+  }
+`;
 
-    &:focus {
-      border-color: var(--marine-blue);
-    }
+const Input = styled.input.withConfig({
+  shouldForwardProp: (prop) => "error" !== prop,
+})`
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: 2px solid var(--light-gray);
+  border-radius: 5px;
+  font-weight: 500;
+  grid-area: input;
+  border-color: ${(props) =>
+    props.error === "true" ? "var(--strawberry-red)" : ""};
+
+  &:focus {
+    border-color: var(--marine-blue);
+    border-color: ${(props) =>
+      props.error === "true" ? "var(--strawberry-red)" : ""};
   }
 `;
 
@@ -57,19 +82,25 @@ function PersonalInfo() {
 
         <InputWrapper>
           <label htmlFor="name">Name</label>
-          <input
+          <Input
+            error={`${!!errors.name}`}
+            autoComplete="off"
             type="text"
             name="name"
             id="name"
             placeholder="e.g Stephen King"
             {...register("name", { required: "Name is required" })}
           />
-          {errors.name && <p>{errors.name.message}</p>}
+          {errors.name && (
+            <InputErrorMessage>{errors.name.message}</InputErrorMessage>
+          )}
         </InputWrapper>
 
         <InputWrapper>
           <label htmlFor="email">Email Address</label>
-          <input
+          <Input
+            error={`${!!errors.name}`}
+            autoComplete="off"
             type="text"
             name="email"
             id="email"
@@ -82,12 +113,16 @@ function PersonalInfo() {
               },
             })}
           />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && (
+            <InputErrorMessage>{errors.email.message}</InputErrorMessage>
+          )}
         </InputWrapper>
 
         <InputWrapper>
           <label htmlFor="phone">Phone Number</label>
-          <input
+          <Input
+            error={`${!!errors.name}`}
+            autoComplete="off"
             type="text"
             name="phone"
             id="phone"
@@ -101,7 +136,9 @@ function PersonalInfo() {
               },
             })}
           />
-          {errors.phone && <p>{errors.phone.message}</p>}
+          {errors.phone && (
+            <InputErrorMessage>{errors.phone.message}</InputErrorMessage>
+          )}
         </InputWrapper>
       </FormInputs>
 

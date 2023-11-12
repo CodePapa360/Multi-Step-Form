@@ -27,7 +27,6 @@ const PlansContainer = styled.div`
 
   @media screen and (min-width: ${breakpoints.md}) {
     flex-direction: row;
-    /* background-color: red; */
     min-height: 11rem;
   }
 `;

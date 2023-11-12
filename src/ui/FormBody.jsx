@@ -9,7 +9,6 @@ const StyledFormBody = styled.form`
 
   @media screen and (min-width: ${breakpoints.md}) {
     margin-top: 0;
-    /* justify-content: center; */
   }
 `;
 

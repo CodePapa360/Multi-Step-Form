@@ -33,7 +33,6 @@ const ExtentionWrapper = styled.li`
     }
   }
 
-  //////////
 
   label::before {
     content: "";
