@@ -11,6 +11,10 @@ import FormInputs from "../ui/FormInputs";
 import { breakpoints } from "../styles/GlobalStyles";
 import InputErrorMessage from "../ui/InputErrorMessage";
 
+const phoneRegex = /^[\d\s()+-]{7,15}$/;
+
+const emailRegex = /\S+@\S+\.\S+/;
+
 const InputWrapper = styled.div`
   min-height: 5.5rem;
   align-content: start;
@@ -43,6 +47,7 @@ const Input = styled.input.withConfig({
 })`
   padding: 0.5rem 1rem;
   outline: none;
+  width: 100%;
   border: 2px solid var(--light-gray);
   border-radius: 5px;
   font-weight: 500;
@@ -109,7 +114,7 @@ function PersonalInfo() {
         <InputWrapper>
           <label htmlFor="email">Email Address</label>
           <Input
-            error={`${!!errors.name}`}
+            error={`${!!errors.email}`}
             autoComplete="off"
             type="email"
             name="email"
@@ -118,7 +123,7 @@ function PersonalInfo() {
             {...register("email", {
               required: "Email address is required",
               pattern: {
-                value: /\S+@\S+\.\S+/,
+                value: emailRegex,
                 message: "Please provide your valid email address.",
               },
             })}
@@ -131,7 +136,7 @@ function PersonalInfo() {
         <InputWrapper>
           <label htmlFor="phone">Phone Number</label>
           <Input
-            error={`${!!errors.name}`}
+            error={`${!!errors.phone}`}
             autoComplete="off"
             type="number"
             name="phone"
@@ -140,8 +145,7 @@ function PersonalInfo() {
             {...register("phone", {
               required: "Phone number is required",
               pattern: {
-                value:
-                  /^(\+\d{1,2}\s?)?1?[-. ]?\(?\d{3}\)?[-. ]?\d{3}[-. ]?\d{4}$/,
+                value: phoneRegex,
                 message: "Please provide your valid mobile number.",
               },
             })}
